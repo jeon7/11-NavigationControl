@@ -110,12 +110,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqI-th-nv1">
+                                <rect key="frame" x="20" y="276" width="156" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btnResizeLampImg:" destination="gyG-vx-xKm" eventType="touchUpInside" id="HNN-7C-UYN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="gYk-tV-0NG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit" id="tav-EK-Tuf"/>
                     <connections>
+                        <outlet property="btnResize" destination="CqI-th-nv1" id="dve-aK-nwp"/>
                         <outlet property="lblWay" destination="S61-gK-hBx" id="4vr-Vi-jN4"/>
                         <outlet property="switchOn" destination="GOW-sr-ii9" id="YRO-7T-MVF"/>
                         <outlet property="textMessage" destination="5n2-6b-Auw" id="I1q-kb-Yom"/>

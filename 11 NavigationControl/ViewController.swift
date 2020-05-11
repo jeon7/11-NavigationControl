@@ -12,15 +12,18 @@ class ViewController: UIViewController, EditDelegate {
     
     let imgOn = UIImage(named: "lamp-on.png")
     let imgOff = UIImage(named: "lamp-off.png")
+    let ZOOM_SCALE: CGFloat = 2.0
     
-    var isOn = true
+    var isOn = false
+    var isZoomedIn = false
   
     @IBOutlet var textMessage: UITextField!
     @IBOutlet var imgView: UIImageView!
     
     override func viewDidLoad() {
+        print("ViewController.vieDidLoade() ") // 처음 한번만 이 함수가 실행됨
         super.viewDidLoad()
-        imgView.image = imgOn
+        imgView.image = imgOff
     }
 
     // 세그웨이 관련 함수
@@ -35,6 +38,7 @@ class ViewController: UIViewController, EditDelegate {
         }
         editViewController.textMessageValue = textMessage.text!
         editViewController.isOn = isOn
+        editViewController.isZoomedIn = isZoomedIn
         editViewController.delegate = self
     }
     
@@ -54,5 +58,18 @@ class ViewController: UIViewController, EditDelegate {
             self.isOn = false
         }
     }
+    
+    func didLampImageZoomDone(_ controller: EditViewController, isZoomedIn: Bool) {
+        if self.isZoomedIn != isZoomedIn {
+            self.isZoomedIn = !self.isZoomedIn
+            
+            if isZoomedIn {
+                imgView.frame.size = CGSize(width: imgView.frame.width * ZOOM_SCALE,
+                                            height: imgView.frame.height * ZOOM_SCALE)
+            } else {
+                imgView.frame.size = CGSize(width: imgView.frame.width / ZOOM_SCALE,
+                                            height: imgView.frame.height / ZOOM_SCALE)
+            }
+        }
+    }
 }
-
